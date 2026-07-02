@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import axios from "axios";
+import api from "@/lib/api";
 import { useNavigate } from "react-router"
 import { useState } from "react";
 
@@ -29,12 +29,11 @@ export function RegisterForm(props) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios
-        .post("https://dev-backend-nine.vercel.app/api/users/", {
-          name,
-          email,
-          password,
-        })
+      await api.post("/api/users/", {
+        name,
+        email,
+        password,
+      })
         .then(() => {
           navigate('/app')
           console.log("User created")

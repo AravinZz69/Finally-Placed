@@ -1,0 +1,16 @@
+import axios from "axios";
+
+const API_BASE_URL = import.meta.env.VITE_API_URL;
+const RESUME_API_BASE_URL = import.meta.env.VITE_RESUME_API_URL || API_BASE_URL;
+
+const api = axios.create({
+  baseURL: API_BASE_URL,
+  withCredentials: true,
+});
+
+export const resumeApi = axios.create({
+  baseURL: RESUME_API_BASE_URL,
+  withCredentials: true,
+});
+
+export default api;

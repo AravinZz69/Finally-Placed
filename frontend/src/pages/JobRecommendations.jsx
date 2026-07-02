@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "@/lib/api";
 
 const JobRecommendations = () => {
   const [jobs, setJobs] = useState([]);
@@ -11,7 +11,7 @@ const JobRecommendations = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await axios.get("https://dev-backend-nine.vercel.app/job-recommendations");
+        const res = await api.get("/job-recommendations");
         setJobs(res.data.jobs);
         setFilteredJobs(res.data.jobs);
         setLoading(false);

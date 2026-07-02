@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 import jsPDF from "jspdf";
+import { resumeApi } from "@/lib/api";
 
 const AnalyzeResume = () => {
     const [file, setFile] = useState(null);
@@ -29,7 +29,7 @@ const AnalyzeResume = () => {
         setError("");
 
         try {
-            const response = await axios.post("http://127.0.0.1:8000/analyze-resume/", formData, {
+            const response = await resumeApi.post("/analyze-resume/", formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
 
